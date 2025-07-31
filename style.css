@@ -17,10 +17,24 @@
 }
 
 .board {
-  width: 400px;
-  height: 400px;
+  display: flex;
+  width: auto;
+  height: auto;
   background-color: lightblue;
+  gap: 2px;
 }
 
+/* board */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pixel {
+  width: 10px;
+  height: 10px;
+  background-color: lightgreen;
+}
 
 
