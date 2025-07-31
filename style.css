@@ -1,3 +1,26 @@
-* {
-  color: blue;
+.canvas {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.container {
+  display: flex;
+}
+
+.toolkit {
+  width: 50px;
+  height: 200px;
+  background-color: lightcoral;
+  margin: auto 10px;
+}
+
+.board {
+  width: 400px;
+  height: 400px;
+  background-color: lightblue;
+}
+
+
+
