@@ -9,19 +9,71 @@
   display: flex;
 }
 
-.toolkit {
-  width: 50px;
-  height: 200px;
-  background-color: lightcoral;
-  margin: auto 10px;
-}
-
 .board {
   display: flex;
   width: auto;
   height: auto;
   background-color: lightblue;
   gap: 2px;
+}
+
+.icon.eraser {
+  color: black;
+  margin-left: -1px;
+}
+
+/* toolkit */
+.toolkit {
+  padding: 5px;
+  margin: auto 10px;
+  background-color: lightcoral;
+  border-radius: 3px;
+}
+
+.toolkit > .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.toolkit button {
+  width: 40px;
+  height: 40px;
+  border: 3px solid darkslategray;
+  border-radius: 4px;
+}
+
+button.eraser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* colors */
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.black {
+  background-color: black;
 }
 
 /* board */
