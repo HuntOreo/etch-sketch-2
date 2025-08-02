@@ -41,7 +41,7 @@ body {
   background-color: lightblue;
 }
 
-.row {
+.column {
   display: flex;
   flex-direction: column;
 }
@@ -94,22 +94,8 @@ button.eraser {
   Colors 
   =======  
 */
-.red {
-  background-color: red;
-}
-
-.blue {
-  background-color: blue;
-}
-
-.green {
-  background-color: green;
-}
-
-.yellow {
-  background-color: yellow;
-}
-
-.black {
-  background-color: black;
-}
+.red { background-color: red; }
+.blue { background-color: blue; }
+.green { background-color: green; }
+.yellow { background-color: yellow; }
+.black { background-color: black; }
