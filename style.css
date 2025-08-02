@@ -1,4 +1,25 @@
+/* Prevent ghost images */
+.noselect {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -webkit-user-drag: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+/* 
+  Body
+  =======
+*/
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .canvas {
+  flex: 2;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -9,20 +30,32 @@
   display: flex;
 }
 
+/* 
+  Board 
+  =======  
+*/
 .board {
   display: flex;
   width: auto;
   height: auto;
   background-color: lightblue;
-  gap: 2px;
 }
 
-.icon.eraser {
-  color: black;
-  margin-left: -1px;
+.row {
+  display: flex;
+  flex-direction: column;
 }
 
-/* toolkit */
+.pixel {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+}
+
+/* 
+  Toolkit 
+  ========
+*/
 .toolkit {
   padding: 5px;
   margin: auto 10px;
@@ -44,9 +77,11 @@
 }
 
 button.eraser {
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: -1px;
 }
 
 .colors {
@@ -55,7 +90,10 @@ button.eraser {
   gap: 5px;
 }
 
-/* colors */
+/* 
+  Colors 
+  =======  
+*/
 .red {
   background-color: red;
 }
@@ -75,18 +113,3 @@ button.eraser {
 .black {
   background-color: black;
 }
-
-/* board */
-.row {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.pixel {
-  width: 10px;
-  height: 10px;
-  background-color: lightgreen;
-}
-
-
