@@ -1,14 +1,11 @@
 const board = document.querySelector('.board');
 const eraser = document.querySelector('.eraser');
+const colorBtns = document.querySelectorAll('button.color');
+
 // Colors //
 const _ERASER = '#2f4f4f';
-const _RED = '#f00';
-const _GREEN = '#0f0';
-const _BLUE = '#00f';
-const _YELLOW = '#ff0';
-const _BLACK = '#000';
-const _WHITE = '#fff';
 const _CUSTOM_COLOR = '#000';
+const _BLACK = '#000';
 let _CURRENT_COLOR = _BLACK;
 
 function buildBoard() {
@@ -36,7 +33,10 @@ function buildBoard() {
   };
 }
 
-eraser.addEventListener('click', (event) => erasePixel(event.target))
+eraser.addEventListener('click', (event) => erasePixel(event.target));
+colorBtns.forEach(btn => btn.addEventListener('click', (event) => {
+  chooseColor(event.target);
+}));
 
 function fillPixel(elem) {
   elem.style.backgroundColor = _CURRENT_COLOR;
@@ -46,8 +46,12 @@ function erasePixel(elem) {
   _CURRENT_COLOR = _ERASER;
 }
 
+function chooseColor(elem) {
+  const chosenColor = getComputedStyle(elem)["backgroundColor"];
+  _CURRENT_COLOR = chosenColor;
+}
+
 buildBoard();
 
-//********************* 
-// Todo: Eraser functionality 
+//*************************************** 
 // Todo: select color to paint with.
