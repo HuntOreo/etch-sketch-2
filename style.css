@@ -52,16 +52,17 @@ body {
 .board {
   display: flex;
   width: auto;
-  height: auto;
+  margin: auto;
   background-color: lightblue;
 }
 
 .column {
   display: flex;
   flex-direction: column;
+  flex: 0;
 }
 
-.pixel {
+.tile {
   width: 10px;
   height: 10px;
   background-color: darkslategray;

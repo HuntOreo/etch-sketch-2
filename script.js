@@ -9,49 +9,58 @@ const _BLACK = '#000';
 let _CURRENT_COLOR = _BLACK;
 
 function buildBoard() {
-  const boardSize = 50;
+  const boardSize = 100;
 
   // Build board, one column at a time.
   for (let i = 0; i < boardSize; i++) {
     const column = document.createElement('div');
     column.classList.toggle('column');
     for (let j = 0; j < boardSize; j++) {
-      const pixel = document.createElement('div');
+      const tile = document.createElement('div');
 
-      // Listen for when a pixel is painted.
-      pixel.addEventListener('click', event => fillPixel(event.target));
-      pixel.addEventListener('mouseover', event => {
-        const isMouseClicked = event.buttons === 1 ? true : false;
-        if (isMouseClicked) { fillPixel(event.target); };
-      });
-
-      column.appendChild(pixel);
-      pixel.classList.toggle('pixel');
-      pixel.classList.toggle('noselect'); // Prevents the 'ghosting' effect.
+      column.appendChild(tile);
+      tile.classList.toggle('tile');
+      tile.classList.toggle('noselect'); // Prevents the 'ghosting' effect.
     };
     board.appendChild(column);
   };
 }
 
-eraser.addEventListener('click', (event) => erasePixel(event.target));
+eraser.addEventListener('click', () => eraseTile());
 colorBtns.forEach(btn => btn.addEventListener('click', (event) => {
   chooseColor(event.target);
 }));
 
-function fillPixel(elem) {
-  elem.style.backgroundColor = _CURRENT_COLOR;
+function handleBoardListeners() {
+  const board = document.querySelector('.board');
+
+  board.addEventListener('click', event => {
+    const isTile = event.target.classList.contains('tile');
+    if (isTile) {
+      fillTile(event.target)
+    }
+  });
+
+  board.addEventListener('mouseover', event => {
+    const isMouseClicked = event.buttons === 1 ? true : false;
+    const isTile = event.target.classList.contains('tile');
+
+    if (isMouseClicked && isTile) { fillTile(event.target); };
+  });
 }
 
-function erasePixel(elem) {
+function fillTile(elem) {
+  elem.style.backgroundColor = _CURRENT_COLOR;;
+}
+
+function eraseTile() {
   _CURRENT_COLOR = _ERASER;
 }
 
 function chooseColor(elem) {
-  const chosenColor = getComputedStyle(elem)["backgroundColor"];
+  const chosenColor = elem.dataset.color;
   _CURRENT_COLOR = chosenColor;
 }
 
 buildBoard();
-
-//*************************************** 
-// Todo: select color to paint with.
+handleBoardListeners();
