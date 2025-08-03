@@ -70,9 +70,31 @@ function chooseColor(elem) {
 
 // If mobile: 
 if (viewport <= mobileWidth) {
-  board.addEventListener('touchmove', event => {
+  let isDrawing = false;
+
+  board.addEventListener('touchstart', event => {
+    event.preventDefault();
     const isTile = event.target.classList.contains('tile');
-    if (isTile) { fillTile(event.target); };
+    isDrawing = true;
+
+    const touch = event.touches[0];
+    const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (elem && isTile) { fillTile(elem) };
+  })
+
+  board.addEventListener('touchmove', event => {
+    event.preventDefault();
+    if (!isDrawing) return;
+
+    const touch = event.touches[0];
+    const isTile = event.target.classList.contains('tile');
+    const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (isTile) { fillTile(elem); };
+  });
+
+  board.addEventListener('touchend', event => {
+    event.preventDefault();
+    isDrawing = false;
   });
 }
 
