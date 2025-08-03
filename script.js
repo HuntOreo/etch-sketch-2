@@ -2,6 +2,10 @@ const board = document.querySelector('.board');
 const eraser = document.querySelector('.eraser');
 const colorBtns = document.querySelectorAll('button.color');
 
+// screen size for checking if mobile
+const viewport = window.innerWidth;
+const mobileWidth = 850;
+
 // Colors //
 const _ERASER = '#2f4f4f';
 const _CUSTOM_COLOR = '#000';
@@ -49,6 +53,7 @@ function handleBoardListeners() {
   });
 }
 
+
 function fillTile(elem) {
   elem.style.backgroundColor = _CURRENT_COLOR;;
 }
@@ -57,9 +62,18 @@ function eraseTile() {
   _CURRENT_COLOR = _ERASER;
 }
 
+
 function chooseColor(elem) {
   const chosenColor = elem.dataset.color;
   _CURRENT_COLOR = chosenColor;
+}
+
+// If mobile: 
+if (viewport <= mobileWidth) {
+  board.addEventListener('touchmove', event => {
+    const isTile = event.target.classList.contains('tile');
+    if (isTile) { fillTile(event.target); };
+  });
 }
 
 buildBoard();
