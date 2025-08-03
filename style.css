@@ -1,3 +1,17 @@
+/* 
+  Custom Properties
+  ==================
+*/
+:root {
+  --eraser-color: #2f4f4f;
+  --red-color: #f00;
+  --green-color: #0f0;
+  --blue-color: #00f;
+  --yellow-color: #ff0;
+  --black-color: #000;
+  --white-color: #fff;
+}
+
 /* Prevent ghost images */
 .noselect {
   -webkit-touch-callout: none !important;
@@ -8,6 +22,7 @@
   -ms-user-select: none !important;
   user-select: none !important;
 }
+
 /* 
   Body
   =======
@@ -49,7 +64,7 @@ body {
 .pixel {
   width: 10px;
   height: 10px;
-  background-color: gray;
+  background-color: darkslategray;
 }
 
 /* 
@@ -94,8 +109,9 @@ button.eraser {
   Colors 
   =======  
 */
-.red { background-color: red; }
-.blue { background-color: blue; }
-.green { background-color: green; }
-.yellow { background-color: yellow; }
-.black { background-color: black; }
+.red { background-color: var(--red-color); }
+.blue { background-color: var(--blue-color); }
+.green { background-color: var(--green-color); }
+.yellow { background-color: var(--yellow-color); }
+.black { background-color: var(--black-color); }
+.white { background-color: var(--white-color); }
