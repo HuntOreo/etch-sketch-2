@@ -1,0 +1,22 @@
+@media (max-width: 850px) {
+  .container {
+    position: relative;
+    flex-grow: 1;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .toolkit {
+    top: 50%;
+    bottom: 50%;
+    height: fit-content;
+    position: absolute;
+    background-color: black;
+    z-index: 100;
+  }
+
+  .board {
+    transform: scale(4);
+    overflow: hidden;
+  }
+}

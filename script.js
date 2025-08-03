@@ -9,7 +9,7 @@ const _BLACK = '#000';
 let _CURRENT_COLOR = _BLACK;
 
 function buildBoard() {
-  const boardSize = 100;
+  const boardSize = 80;
 
   // Build board, one column at a time.
   for (let i = 0; i < boardSize; i++) {

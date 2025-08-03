@@ -63,8 +63,10 @@ body {
 }
 
 .tile {
-  width: 10px;
-  height: 10px;
+  max-width: 10px;
+  max-height: 10px;
+  min-width: 8px;
+  min-height: 8px;
   background-color: darkslategray;
 }
 
