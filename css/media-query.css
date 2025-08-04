@@ -22,3 +22,10 @@
     overflow: hidden;
   }
 }
+
+@media (max-height: 600px) {
+  .toolkit {
+    top: 30vh;
+    
+  }
+}
