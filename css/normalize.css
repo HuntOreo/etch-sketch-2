@@ -1,1 +1,6 @@
-@import '/infrastructure/node_modules/@huntoreocodes/hunter-normalize/hunter-normalize.css'
+@import '/infrastructure/node_modules/@huntoreocodes/hunter-normalize/hunter-normalize.css';
+
+body {
+  padding: 0;
+  margin: 0;
+}

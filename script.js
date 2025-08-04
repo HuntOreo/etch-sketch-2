@@ -3,8 +3,10 @@ const eraser = document.querySelector('.eraser');
 const colorBtns = document.querySelectorAll('button.color');
 
 // screen size for checking if mobile
-const viewport = window.innerWidth;
 const mobileWidth = 850;
+const mobileHeight = 1200;
+let viewportWidth = window.innerWidth;
+let viewportHeight = window.innerHeight;
 
 // Colors //
 const _ERASER = '#2f4f4f';
@@ -12,14 +14,14 @@ const _CUSTOM_COLOR = '#000';
 const _BLACK = '#000';
 let _CURRENT_COLOR = _BLACK;
 
-function buildBoard() {
-  const boardSize = 80;
+const _BOARD_SIZE = 120;
 
+function buildBoard() {
   // Build board, one column at a time.
-  for (let i = 0; i < boardSize; i++) {
+  for (let i = 0; i < _BOARD_SIZE; i++) {
     const column = document.createElement('div');
     column.classList.toggle('column');
-    for (let j = 0; j < boardSize; j++) {
+    for (let j = 0; j < _BOARD_SIZE; j++) {
       const tile = document.createElement('div');
 
       column.appendChild(tile);
@@ -51,25 +53,24 @@ function handleBoardListeners() {
 
     if (isMouseClicked && isTile) { fillTile(event.target); };
   });
+
+  // If on mobile:
+  if (viewportWidth <= mobileWidth || viewportHeight <= mobileHeight) {
+    handleMobileListeners();
+  };
+
+  window.addEventListener('resize', () => {
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
+
+    // If on mobile:
+    if (viewportWidth <= mobileWidth || viewportHeight <= mobileHeight) {
+      handleMobileListeners();
+    };
+  });
 }
 
-
-function fillTile(elem) {
-  elem.style.backgroundColor = _CURRENT_COLOR;;
-}
-
-function eraseTile() {
-  _CURRENT_COLOR = _ERASER;
-}
-
-
-function chooseColor(elem) {
-  const chosenColor = elem.dataset.color;
-  _CURRENT_COLOR = chosenColor;
-}
-
-// If mobile: 
-if (viewport <= mobileWidth) {
+function handleMobileListeners() {
   let isDrawing = false;
 
   board.addEventListener('touchstart', event => {
@@ -96,6 +97,19 @@ if (viewport <= mobileWidth) {
     event.preventDefault();
     isDrawing = false;
   });
+}
+
+function fillTile(elem) {
+  elem.style.backgroundColor = _CURRENT_COLOR;
+}
+
+function eraseTile() {
+  _CURRENT_COLOR = _ERASER;
+}
+
+function chooseColor(elem) {
+  const chosenColor = elem.dataset.color;
+  _CURRENT_COLOR = chosenColor;
 }
 
 buildBoard();
