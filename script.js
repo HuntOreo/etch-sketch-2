@@ -74,13 +74,19 @@ function handleMobileListeners() {
   let isDrawing = false;
 
   board.addEventListener('touchstart', event => {
-    event.preventDefault();
-    const isTile = event.target.classList.contains('tile');
-    isDrawing = true;
 
-    const touch = event.touches[0];
-    const elem = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (elem && isTile) { fillTile(elem) };
+    if (event.touches.length === 1) {
+
+      event.preventDefault();
+      const isTile = event.target.classList.contains('tile');
+      isDrawing = true;
+
+      const touch = event.touches[0];
+      const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (elem && isTile) { fillTile(elem) };
+    } else {
+      return;
+    }
   })
 
   board.addEventListener('touchmove', event => {
