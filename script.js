@@ -74,7 +74,7 @@ function handleMobileListeners() {
   let isDrawing = false;
 
   board.addEventListener('touchstart', event => {
-
+    console.log(event.touches);
     if (event.touches.length === 1) {
 
       event.preventDefault();
