@@ -1,0 +1,12 @@
+.toolkit button {
+  transition-duration: 0.2s;
+}
+
+.toolkit button:hover {
+  box-shadow: 0px 0px 5px black;
+  transform: scale(1.1);
+}
+
+.toolkit button:active {
+  transform: scale(0.8);
+}
