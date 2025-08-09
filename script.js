@@ -108,7 +108,7 @@ function eraseTile() {
 }
 
 function chooseColor(elem) {
-  const chosenColor = elem.dataset.color;
+  const chosenColor = elem.style.getPropertyValue('--selected-color');
   _CURRENT_COLOR = chosenColor;
 }
 
